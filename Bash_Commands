@@ -27,3 +27,13 @@ php artisan make:model State -fm
 php artisan make:migration create_article_tag_table
 
 
+// Laravel dev packages
+composer require barryvdh/laravel-debugbar --dev
+composer require --dev barryvdh/laravel-ide-helper --dev
+php artisan ide-helper:generate
+
+// Laravel UI
+composer require laravel/ui (composer require laravel/ui:*)
+php artisan ui vue
+npm install
+npm run dev
