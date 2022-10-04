@@ -26,7 +26,6 @@ php artisan make:model Comment -fm
 php artisan make:model State -fm
 php artisan make:migration create_article_tag_table
 
-
 // Laravel dev packages
 composer require barryvdh/laravel-debugbar --dev
 composer require --dev barryvdh/laravel-ide-helper --dev
@@ -37,3 +36,11 @@ composer require laravel/ui (composer require laravel/ui:*)
 php artisan ui vue
 npm install
 npm run dev
+
+// Update front libraries
+npm uninstall bootstrap jquery
+npm install bootstrap@next (npm install bootstrap@5.2.2)
+npm i bootstrap-icons
+npm install --save @fortawesome/fontawesome-free
+npm install vuex@next --save (npm install vuex@next --save --force)
+
