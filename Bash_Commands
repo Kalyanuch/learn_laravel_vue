@@ -1,0 +1,29 @@
+// Database commands
+
+// First step - make models
+php artisan make:model Article
+php artisan make:model Tag
+php artisan make:model Comment
+php artisan make:model State
+
+// Second step - make migrations
+php artisan make:migration create_articles_table
+php artisan make:migration create_tags_table
+php artisan make:migration create_comments_table
+php artisan make:migration create_states_table
+php artisan make:migration create_article_tag_table
+
+// Third step - make factories
+php artisan make:factory ArticleFactory --model=Article
+php artisan make:factory CommentFactory --model=Comment
+php artisan make:factory TagFactory --model=Tag
+php artisan make:factory StateFactory --model=State
+
+// Or all these steps can be implemented by commands with params
+php artisan make:model Article -fm
+php artisan make:model Tag -fm
+php artisan make:model Comment -fm
+php artisan make:model State -fm
+php artisan make:migration create_article_tag_table
+
+
