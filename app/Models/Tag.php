@@ -24,6 +24,13 @@ class Tag extends Model
     protected $guarded = [];
 
     /**
+     * There are no available timestamps.
+     *
+     * @var bool
+     */
+    public $timestamps = FALSE;
+
+    /**
      * Returns tag articles (OneToMany relation).
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
