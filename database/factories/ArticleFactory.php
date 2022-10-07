@@ -15,7 +15,7 @@ class ArticleFactory extends Factory
     public function definition()
     {
         $title = $this->faker->sentence(6, TRUE);
-        $slug = Str::substr(Str::lower(preg_replace('/\s+/', '-', $title)), 0, -1)
+        $slug = Str::substr(Str::lower(preg_replace('/\s+/', '-', $title)), 0, -1);
 
         return [
             'title' => $title,
