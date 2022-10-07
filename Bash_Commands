@@ -50,3 +50,6 @@ php artisan db:seed
 
 // Remigrate database and run seed
 php artisan migrate:refresh --seed
+
+// After implements home page
+npm run dev
