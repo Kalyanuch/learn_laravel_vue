@@ -47,3 +47,6 @@ npm install vuex@next --save (npm install vuex@next --save --force)
 // After migrations, factories and seeder preparation
 php artisan migrate
 php artisan db:seed
+
+// Remigrate database and run seed
+php artisan migrate:refresh --seed
