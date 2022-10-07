@@ -8,4 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    /**
+     * Fields that allowed for autofill (not required).
+     *
+     * @var string[]
+     */
+    protected $fillable = ['subject', 'body', 'article_id'];
+
+    /**
+     * Fields that not allowed for autofill (not required).
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
+     * Returns comment article (OneToOne relation).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function article()
+    {
+        $this->belongsTo(Article::class);
+    }
 }
