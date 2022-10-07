@@ -22,4 +22,11 @@ class State extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * There are no available timestamps.
+     *
+     * @var bool
+     */
+    public $timestamps = FALSE;
 }
