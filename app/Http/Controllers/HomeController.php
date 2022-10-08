@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::query()->orderBy('created_at', 'desc')->get()->take(6);
+        $articles = Article::query()->orderBy('created_at', 'desc')->limit(6)->get();
 
         return view('app.home', compact('articles'));
     }
