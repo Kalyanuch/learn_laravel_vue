@@ -56,3 +56,4 @@ npm run dev
 
 // Create home controller
 php artisan make:controller HomeController
+php artisan make:controller ArticleController

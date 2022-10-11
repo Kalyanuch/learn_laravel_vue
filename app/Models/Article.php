@@ -110,4 +110,12 @@ class Article extends Model
             ->limit($limit)
             ->get();
     }
+
+    public function scopeAllPaginate(Builder $query, int $limit = 5)
+    {
+        return $query->with('state', 'tags')
+            ->orderBy('created_at', 'desc')
+            ->paginate($limit);
+//            ->get();
+    }
 }

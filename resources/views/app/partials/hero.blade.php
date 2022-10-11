@@ -7,7 +7,6 @@
                         <a href="#">Разработчик PHP - Laravel</a>
                     </div>
                     <h2><a href="#">Тестовое задание</a></h2>
-
                     <div class="hero__content-tag">
                         <a href="#">Udemy.com</a>
                     </div>
