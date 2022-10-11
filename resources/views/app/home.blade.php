@@ -13,7 +13,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$article->title}}</h5>
                         <p class="card-text">{{$article->getBodyPreview()}}</p>
-                        <p>{{$article->created_at}}</p>
+{{--                        <p>{{$article->created_at}}</p>--}}
+                        <p>{{$article->publishedAtForHumans()}}</p>
                         <p>{{$article->createdAtForHumans()}}</p>
                         <a href="#" class="btn btn-primary">Подробнее</a>
                         <div class="mt-3">

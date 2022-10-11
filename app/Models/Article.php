@@ -19,6 +19,13 @@ class Article extends Model
     protected $fillable = ['title', 'body', 'img', 'slug'];
 
     /**
+     * Date fields list (not created_at and updated_at).
+     *
+     * @var string[]
+     */
+    public $dates = ['published_at'];
+
+    /**
      * Fields that not allowed for autofill (not required).
      *
      * @var array
@@ -74,6 +81,16 @@ class Article extends Model
     public function createdAtForHumans()
     {
         return $this->created_at->diffForHumans();
+    }
+
+    /**
+     * Prepares article published interval in humans readable format.
+     *
+     * @return mixed
+     */
+    public function publishedAtForHumans()
+    {
+        return $this->published_at->diffForHumans();
     }
 
     /**
