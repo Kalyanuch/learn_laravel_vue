@@ -111,6 +111,17 @@ class Article extends Model
             ->get();
     }
 
+    /**
+     * Find items with pagination.
+     *
+     * @param Builder $query
+     *   Query builder.
+     * @param int $limit
+     *   Items limit.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     *   Return models collection.
+     */
     public function scopeAllPaginate(Builder $query, int $limit = 5)
     {
         return $query->with('state', 'tags')
@@ -118,10 +129,37 @@ class Article extends Model
             ->paginate($limit);
     }
 
+    /**
+     * Find item by slug.
+     *
+     * @param Builder $query
+     *   Query builder.
+     * @param string $slug
+     *   Slug label.
+     *
+     * @return Builder|Model
+     *   Return model.
+     */
     public function scopefindBySlug(Builder $query, string $slug)
     {
         return $query->with('comments', 'tags', 'state')
             ->where('slug', $slug)
             ->firstOrFail();
+    }
+
+    /**
+     * Find articles by tag with pagination.
+     *
+     * @param Builder $query
+     *   Query builder.
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     *   Return collection.
+     */
+    public function scopefindByTag(Builder $query)
+    {
+        return $query->with('tags', 'state')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
     }
 }

@@ -31,5 +31,5 @@
             </div>
         @endforeach
     </div>
-    <div class="mx-auto" style="width: max-content">{{$articles->links()}}</div>
+{{--    <div class="mx-auto" style="width: max-content">{{$articles->links()}}</div>--}}
 @endsection
