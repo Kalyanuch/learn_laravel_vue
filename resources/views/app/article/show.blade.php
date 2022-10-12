@@ -3,6 +3,7 @@
 <div id="app">
     <div class="row mt-5">
         <div class="col-12 p-3">
+            <article-component></article-component>
             <img src="{{ $article->img }}" class="border rounded mx-auto d-block" alt="{{ $article->slug }}">
             <h5 class="mt-5">{{ $article->title }}</h5>
             <p>
