@@ -1,37 +1,44 @@
 <template>
     <div class="container">
-        <h1>{{ hello }}</h1>
-        <h2>{{ helloToUpper }}</h2>
-        <h3>{{ sum(6,8) }}</h3>
-        <img :src="img" alt="">
-        <p v-if="true">true</p>
-        <ul>
-            <li v-for="(index, car) in this.cars">{{ index }} - {{ car }}</li>
-        </ul>
+        <h1>Hello {{fullname}} - {{name}}</h1>
+<!--        <h1>{{ hello }}</h1>-->
+<!--        <h2>{{ helloToUpper }}</h2>-->
+<!--        <h3>{{ sum(6,8) }}</h3>-->
+<!--        <img :src="img" alt="">-->
+<!--        <p v-if="true">true</p>-->
+<!--        <ul>-->
+<!--            <li v-for="(index, car) in this.cars">{{ index }} - {{ car }}</li>-->
+<!--        </ul>-->
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            hello: 'Hello World!',
-            img: 'https://via.placeholder.com/600/5F113B/FFFFFF/?text=Laravel:8.*',
-            cars: ['BMW', 'Nissan', 'Volvo', 'Audi']
-        }
-    },
+    // data() {
+    //     return {
+    //         hello: 'Hello World!',
+    //         img: 'https://via.placeholder.com/600/5F113B/FFFFFF/?text=Laravel:8.*',
+    //         cars: ['BMW', 'Nissan', 'Volvo', 'Audi']
+    //     }
+    // },
 
     computed: {
-        helloToUpper() {
-            return this.hello.toUpperCase();
+        // helloToUpper() {
+        //     return this.hello.toUpperCase();
+        // }
+        fullname() {
+            return this.$store.getters.getFullName;
+        },
+        name() {
+            return this.$store.state.firstname;
         }
     },
 
-    methods: {
-        sum(a, b) {
-            return a + b;
-        }
-    },
+    // methods: {
+    //     sum(a, b) {
+    //         return a + b;
+    //     }
+    // },
 
     mounted() {
         console.log('Component mounted.')

@@ -31,5 +31,6 @@ Vue.component('article-component', require('./components/ArticleComponent.vue').
  */
 
 const app = new Vue({
+    store,
     el: '#app',
 });
