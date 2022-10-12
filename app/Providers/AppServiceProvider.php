@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.app', function($view) {
             $view->with('mainLink', request()->is('/') ? self::HEADER_MENU_ACTIVE_CLASS : '');
-            $view->with('articleLink', Route::current()->getName() == 'article.index' ? self::HEADER_MENU_ACTIVE_CLASS : '');
+            $view->with('articleLink', in_array(Route::current()->getName(), ['article.index', 'article.show']) ? self::HEADER_MENU_ACTIVE_CLASS : '');
         });
     }
 }
