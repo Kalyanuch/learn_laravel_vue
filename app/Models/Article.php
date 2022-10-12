@@ -116,6 +116,5 @@ class Article extends Model
         return $query->with('state', 'tags')
             ->orderBy('created_at', 'desc')
             ->paginate($limit);
-//            ->get();
     }
 }
