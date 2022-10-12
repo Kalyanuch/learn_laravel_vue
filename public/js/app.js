@@ -5314,6 +5314,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      hello: 'Hello World!',
+      img: 'https://via.placeholder.com/600/5F113B/FFFFFF/?text=Laravel:8.*',
+      cars: ['BMW', 'Nissan', 'Volvo', 'Audi']
+    };
+  },
+  computed: {
+    helloToUpper: function helloToUpper() {
+      return this.hello.toUpperCase();
+    }
+  },
+  methods: {
+    sum: function sum(a, b) {
+      return a + b;
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -5356,17 +5373,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("Hello!")])]);
-}];
+  }, [_c("h1", [_vm._v(_vm._s(_vm.hello))]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(_vm.helloToUpper))]), _vm._v(" "), _c("h3", [_vm._v(_vm._s(_vm.sum(6, 8)))]), _vm._v(" "), _c("img", {
+    attrs: {
+      src: _vm.img,
+      alt: ""
+    }
+  }), _vm._v(" "),  true ? _c("p", [_vm._v("true")]) : 0, _vm._v(" "), _c("ul", _vm._l(this.cars, function (index, car) {
+    return _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(car))]);
+  }), 0)]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 

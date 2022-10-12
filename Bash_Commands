@@ -60,3 +60,6 @@ php artisan make:controller ArticleController
 
 // After composer.json was changed
 composer dump-autoload -o
+
+// After changes in vue js files
+npm run dev
