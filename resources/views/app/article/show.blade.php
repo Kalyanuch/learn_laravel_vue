@@ -16,6 +16,10 @@
             </p>
             <p class="card-text">{{ $article->body }}</p>
             <p>Опубліковано: <i>{{ $article->createdAtForHumans() }}</i></p>
+            <div class="mt-3">
+                <span class="badge bg-primary">{{ $article->state->likes }} <i class="far fa-thumbs-up"></i></span>
+                <span class="badge bg-danger">{{ $article->state->views }} <i class="far fa-eye"></i></span>
+            </div>
         </div>
     </div>
 </div>
@@ -47,5 +51,5 @@
 </div>
 @endsection
 @section('vue')
-
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endsection
