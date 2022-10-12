@@ -117,4 +117,11 @@ class Article extends Model
             ->orderBy('created_at', 'desc')
             ->paginate($limit);
     }
+
+    public function scopefindBySlug(Builder $query, string $slug)
+    {
+        return $query->with('comments', 'tags', 'state')
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
 }

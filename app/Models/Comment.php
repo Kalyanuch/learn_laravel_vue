@@ -32,4 +32,14 @@ class Comment extends Model
     {
         $this->belongsTo(Article::class);
     }
+
+    /**
+     * Prepares article age in humans readable format.
+     *
+     * @return mixed
+     */
+    public function createdAtForHumans()
+    {
+        return $this->created_at->diffForHumans();
+    }
 }
