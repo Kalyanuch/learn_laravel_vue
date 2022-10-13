@@ -2072,6 +2072,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     tagsLen: function tagsLen() {
       return this.$store.state.article.tags.length;
+    },
+    views: function views() {
+      return this.$store.getters.articleViews;
+    },
+    likes: function likes() {
+      return this.$store.getters.articleLikes;
     }
   },
   mounted: function mounted() {
@@ -2138,11 +2144,11 @@ var render = function render() {
     staticClass: "mt-3"
   }, [_vm.article.state ? _c("span", {
     staticClass: "badge bg-primary"
-  }, [_vm._v(_vm._s(_vm.article.state.likes) + " "), _c("i", {
+  }, [_vm._v(_vm._s(_vm.likes) + " "), _c("i", {
     staticClass: "far fa-thumbs-up"
   })]) : _vm._e(), _vm._v(" "), _vm.article.state ? _c("span", {
     staticClass: "badge bg-danger"
-  }, [_vm._v(_vm._s(_vm.article.state.views) + " "), _c("i", {
+  }, [_vm._v(_vm._s(_vm.views) + " "), _c("i", {
     staticClass: "far fa-eye"
   })]) : _vm._e()])])]);
 };
@@ -2266,7 +2272,18 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       });
     }
   },
-  getters: {},
+  getters: {
+    articleViews: function articleViews(state) {
+      if (state.article.statistic) {
+        return state.article.statistic.view;
+      }
+    },
+    articleLikes: function articleLikes(state) {
+      if (state.article.statistic) {
+        return state.article.statistic.likes;
+      }
+    }
+  },
   mutations: {
     SET_ARTICLE: function SET_ARTICLE(state, payload) {
       return state.article = payload;

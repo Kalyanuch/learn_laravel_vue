@@ -17,7 +17,16 @@ export default new Vuex.Store({
         }
     },
     getters: {
-
+        articleViews(state) {
+            if(state.article.statistic) {
+                return state.article.statistic.view;
+            }
+        },
+        articleLikes(state) {
+            if(state.article.statistic) {
+                return state.article.statistic.likes;
+            }
+        }
     },
     mutations: {
         SET_ARTICLE(state, payload) {
