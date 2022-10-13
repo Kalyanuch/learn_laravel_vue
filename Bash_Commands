@@ -66,3 +66,9 @@ npm run dev
 
 // Create API controller
 php artisan make:controller App\Http\Controllers\Api\ArticleController
+
+// Create resources for models.
+php artisan make:resource ArticleResource
+php artisan make:resource CommentResource
+php artisan make:resource TagResource
+php artisan make:resource StateResource
