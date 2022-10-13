@@ -63,3 +63,6 @@ composer dump-autoload -o
 
 // After changes in vue js files
 npm run dev
+
+// Create API controller
+php artisan make:controller App\Http\Controllers\Api\ArticleController
