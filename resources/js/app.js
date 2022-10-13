@@ -30,6 +30,13 @@ const app = new Vue({
     el: '#app',
     store,
     created() {
-        this.$store.dispatch('getArticleData');
+        const url = window.location.pathname;
+        const slug = url.substring(url.lastIndexOf('/') + 1);
+
+        console.log('###Url: ', url, ' ###Slug: ', slug);
+
+        this.$store.commit('SET_SLUG', slug);
+
+        this.$store.dispatch('getArticleData', slug);
     }
 });

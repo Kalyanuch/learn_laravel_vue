@@ -12,11 +12,12 @@ export default new Vuex.Store({
                 likes: 0,
                 views: 0
             },
-        }
+        },
+        slug: ''
     },
     actions: {
         getArticleData(context, payload) {
-            axios.get('/api/article-json')
+            axios.get('/api/article-json', {params: {slug: payload}})
                 .then((response) => {
                     context.commit('SET_ARTICLE', response.data.data);
                 })
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     mutations: {
         SET_ARTICLE(state, payload) {
             return state.article = payload;
+        },
+        SET_SLUG(state, payload) {
+            return state.slug = payload;
         }
     }
 })

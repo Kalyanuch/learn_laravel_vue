@@ -2237,7 +2237,11 @@ var app = new Vue({
   el: '#app',
   store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
   created: function created() {
-    this.$store.dispatch('getArticleData');
+    var url = window.location.pathname;
+    var slug = url.substring(url.lastIndexOf('/') + 1);
+    console.log('###Url: ', url, ' ###Slug: ', slug);
+    this.$store.commit('SET_SLUG', slug);
+    this.$store.dispatch('getArticleData', slug);
   }
 });
 
@@ -2268,11 +2272,16 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
         likes: 0,
         views: 0
       }
-    }
+    },
+    slug: ''
   },
   actions: {
     getArticleData: function getArticleData(context, payload) {
-      axios.get('/api/article-json').then(function (response) {
+      axios.get('/api/article-json', {
+        params: {
+          slug: payload
+        }
+      }).then(function (response) {
         context.commit('SET_ARTICLE', response.data.data);
       })["catch"](function () {
         console.log('Error');
@@ -2290,6 +2299,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
   mutations: {
     SET_ARTICLE: function SET_ARTICLE(state, payload) {
       return state.article = payload;
+    },
+    SET_SLUG: function SET_SLUG(state, payload) {
+      return state.slug = payload;
     }
   }
 }));
