@@ -1,44 +1,35 @@
 <template>
-    <div class="container">
-        <h1>Hello {{fullname}} - {{name}}</h1>
-<!--        <h1>{{ hello }}</h1>-->
-<!--        <h2>{{ helloToUpper }}</h2>-->
-<!--        <h3>{{ sum(6,8) }}</h3>-->
-<!--        <img :src="img" alt="">-->
-<!--        <p v-if="true">true</p>-->
-<!--        <ul>-->
-<!--            <li v-for="(index, car) in this.cars">{{ index }} - {{ car }}</li>-->
-<!--        </ul>-->
+    <div class="row mt-5">
+        <div class="col-12 p-3">
+<!--            <article-component></article-component>-->
+            <img :src="article.img" class="border rounded mx-auto d-block" alt="...">
+            <h5 class="mt-5">{{ article.title }}</h5>
+            <p>
+                <span class="tag" v-for="(tag, index) in article.tags">
+                    <span v-if="tagsLen == (index + 1)">{{ tag.label }}</span>
+                    <span v-else>{{ tag.label }} | </span>
+                </span>
+            </p>
+            <p class="card-text">{{ article.body }}</p>
+            <p>Опубліковано: <i>{{ article.created_at }}</i></p>
+            <div class="mt-3">
+                <span class="badge bg-primary" v-if="article.state">{{ article.state.likes }} <i class="far fa-thumbs-up"></i></span>
+                <span class="badge bg-danger" v-if="article.state">{{ article.state.views }} <i class="far fa-eye"></i></span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    // data() {
-    //     return {
-    //         hello: 'Hello World!',
-    //         img: 'https://via.placeholder.com/600/5F113B/FFFFFF/?text=Laravel:8.*',
-    //         cars: ['BMW', 'Nissan', 'Volvo', 'Audi']
-    //     }
-    // },
-
     computed: {
-        // helloToUpper() {
-        //     return this.hello.toUpperCase();
-        // }
-        fullname() {
-            return this.$store.getters.getFullName;
+        article() {
+            return this.$store.state.article;
         },
-        name() {
-            return this.$store.state.firstname;
+        tagsLen() {
+            return this.$store.state.article.tags.length;
         }
     },
-
-    // methods: {
-    //     sum(a, b) {
-    //         return a + b;
-    //     }
-    // },
 
     mounted() {
         console.log('Component mounted.')

@@ -29,5 +29,7 @@ Vue.component('article-component', require('./components/ArticleComponent.vue').
 const app = new Vue({
     el: '#app',
     store,
-    // components: {ArticleComponent},
+    created() {
+        this.$store.dispatch('getArticleData');
+    }
 });

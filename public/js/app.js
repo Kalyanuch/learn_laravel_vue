@@ -2066,29 +2066,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  // data() {
-  //     return {
-  //         hello: 'Hello World!',
-  //         img: 'https://via.placeholder.com/600/5F113B/FFFFFF/?text=Laravel:8.*',
-  //         cars: ['BMW', 'Nissan', 'Volvo', 'Audi']
-  //     }
-  // },
   computed: {
-    // helloToUpper() {
-    //     return this.hello.toUpperCase();
-    // }
-    fullname: function fullname() {
-      return this.$store.getters.getFullName;
+    article: function article() {
+      return this.$store.state.article;
     },
-    name: function name() {
-      return this.$store.state.firstname;
+    tagsLen: function tagsLen() {
+      return this.$store.state.article.tags.length;
     }
   },
-  // methods: {
-  //     sum(a, b) {
-  //         return a + b;
-  //     }
-  // },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -2132,8 +2117,34 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container"
-  }, [_c("h1", [_vm._v("Hello " + _vm._s(_vm.fullname) + " - " + _vm._s(_vm.name))])]);
+    staticClass: "row mt-5"
+  }, [_c("div", {
+    staticClass: "col-12 p-3"
+  }, [_c("img", {
+    staticClass: "border rounded mx-auto d-block",
+    attrs: {
+      src: _vm.article.img,
+      alt: "..."
+    }
+  }), _vm._v(" "), _c("h5", {
+    staticClass: "mt-5"
+  }, [_vm._v(_vm._s(_vm.article.title))]), _vm._v(" "), _c("p", _vm._l(_vm.article.tags, function (tag, index) {
+    return _c("span", {
+      staticClass: "tag"
+    }, [_vm.tagsLen == index + 1 ? _c("span", [_vm._v(_vm._s(tag.label))]) : _c("span", [_vm._v(_vm._s(tag.label) + " | ")])]);
+  }), 0), _vm._v(" "), _c("p", {
+    staticClass: "card-text"
+  }, [_vm._v(_vm._s(_vm.article.body))]), _vm._v(" "), _c("p", [_vm._v("Опубліковано: "), _c("i", [_vm._v(_vm._s(_vm.article.created_at))])]), _vm._v(" "), _c("div", {
+    staticClass: "mt-3"
+  }, [_vm.article.state ? _c("span", {
+    staticClass: "badge bg-primary"
+  }, [_vm._v(_vm._s(_vm.article.state.likes) + " "), _c("i", {
+    staticClass: "far fa-thumbs-up"
+  })]) : _vm._e(), _vm._v(" "), _vm.article.state ? _c("span", {
+    staticClass: "badge bg-danger"
+  }, [_vm._v(_vm._s(_vm.article.state.views) + " "), _c("i", {
+    staticClass: "far fa-eye"
+  })]) : _vm._e()])])]);
 };
 
 var staticRenderFns = [];
@@ -2218,8 +2229,10 @@ Vue.component('article-component', (__webpack_require__(/*! ./components/Article
 
 var app = new Vue({
   el: '#app',
-  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"] // components: {ArticleComponent},
-
+  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+  created: function created() {
+    this.$store.dispatch('getArticleData');
+  }
 });
 
 /***/ }),
@@ -2242,26 +2255,21 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    firstname: "John",
-    lastname: "Jayson"
+    article: {}
   },
   actions: {
-    testAction: function testAction(context, payload) {
-      context.commit('SET_FIRSTNAME', response.data.name);
-      context.commit('SET_LASTNAME', response.data.lastname);
+    getArticleData: function getArticleData(context, payload) {
+      axios.get('/api/article-json').then(function (response) {
+        context.commit('SET_ARTICLE', response.data.data);
+      })["catch"](function () {
+        console.log('Error');
+      });
     }
   },
-  getters: {
-    getFullName: function getFullName(state) {
-      return state.firstname + ' ' + state.lastname;
-    }
-  },
+  getters: {},
   mutations: {
-    SET_FIRSTNAME: function SET_FIRSTNAME(state, payload) {
-      state.firstname = payload;
-    },
-    SET_LASTNAME: function SET_LASTNAME(state, payload) {
-      state.lastname = payload;
+    SET_ARTICLE: function SET_ARTICLE(state, payload) {
+      return state.article = payload;
     }
   }
 }));
