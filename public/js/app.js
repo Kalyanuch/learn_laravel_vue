@@ -2274,13 +2274,13 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
   },
   getters: {
     articleViews: function articleViews(state) {
-      if (state.article.statistic) {
-        return state.article.statistic.view;
+      if (state.article.state) {
+        return state.article.state.views;
       }
     },
     articleLikes: function articleLikes(state) {
-      if (state.article.statistic) {
-        return state.article.statistic.likes;
+      if (state.article.state) {
+        return state.article.state.likes;
       }
     }
   },

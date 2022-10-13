@@ -18,13 +18,13 @@ export default new Vuex.Store({
     },
     getters: {
         articleViews(state) {
-            if(state.article.statistic) {
-                return state.article.statistic.view;
+            if(state.article.state) {
+                return state.article.state.views;
             }
         },
         articleLikes(state) {
-            if(state.article.statistic) {
-                return state.article.statistic.likes;
+            if(state.article.state) {
+                return state.article.state.likes;
             }
         }
     },
