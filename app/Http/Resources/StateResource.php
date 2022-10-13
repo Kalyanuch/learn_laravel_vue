@@ -14,6 +14,9 @@ class StateResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'likes' => $this->likes,
+            'views' => $this->views,
+        ];
     }
 }
