@@ -5,7 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        article: {}
+        article: {
+            comments: [],
+            tags: [],
+            state: {
+                likes: 0,
+                views: 0
+            },
+        }
     },
     actions: {
         getArticleData(context, payload) {
@@ -18,14 +25,10 @@ export default new Vuex.Store({
     },
     getters: {
         articleViews(state) {
-            if(state.article.state) {
-                return state.article.state.views;
-            }
+            return state.article.state.views;
         },
         articleLikes(state) {
-            if(state.article.state) {
-                return state.article.state.likes;
-            }
+            return state.article.state.likes;
         }
     },
     mutations: {
