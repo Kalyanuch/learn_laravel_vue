@@ -2142,15 +2142,15 @@ var render = function render() {
     staticClass: "card-text"
   }, [_vm._v(_vm._s(_vm.article.body))]), _vm._v(" "), _c("p", [_vm._v("Опубліковано: "), _c("i", [_vm._v(_vm._s(_vm.article.created_at))])]), _vm._v(" "), _c("div", {
     staticClass: "mt-3"
-  }, [_vm.article.state ? _c("span", {
+  }, [_c("span", {
     staticClass: "badge bg-primary"
   }, [_vm._v(_vm._s(_vm.likes) + " "), _c("i", {
     staticClass: "far fa-thumbs-up"
-  })]) : _vm._e(), _vm._v(" "), _vm.article.state ? _c("span", {
+  })]), _vm._v(" "), _c("span", {
     staticClass: "badge bg-danger"
   }, [_vm._v(_vm._s(_vm.views) + " "), _c("i", {
     staticClass: "far fa-eye"
-  })]) : _vm._e()])])]);
+  })])])])]);
 };
 
 var staticRenderFns = [];
@@ -2261,7 +2261,14 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    article: {}
+    article: {
+      comments: [],
+      tags: [],
+      state: {
+        likes: 0,
+        views: 0
+      }
+    }
   },
   actions: {
     getArticleData: function getArticleData(context, payload) {
@@ -2274,14 +2281,10 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
   },
   getters: {
     articleViews: function articleViews(state) {
-      if (state.article.state) {
-        return state.article.state.views;
-      }
+      return state.article.state.views;
     },
     articleLikes: function articleLikes(state) {
-      if (state.article.state) {
-        return state.article.state.likes;
-      }
+      return state.article.state.likes;
     }
   },
   mutations: {
