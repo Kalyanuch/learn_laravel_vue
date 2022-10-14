@@ -36,5 +36,6 @@ const app = new Vue({
         this.$store.commit('SET_SLUG', slug);
 
         this.$store.dispatch('getArticleData', slug);
+        this.$store.dispatch('viewsIncrement', slug);
     }
 });

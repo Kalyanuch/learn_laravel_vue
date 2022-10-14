@@ -17,4 +17,22 @@ class ArticleController extends Controller
 
         return new ArticleResource($article);
     }
+
+    public function viewsIncrement(Request $request)
+    {
+        $slug = $request->get('slug') ?? '';
+
+        $article = Article::findBySlug($slug);
+        $article->state->increment('views');
+
+        return new ArticleResource($article);
+    }
+
+    public function likesIncrement(Request $request)
+    {
+        $slug = $request->get('slug') ?? '';
+
+        $article = Article::findBySlug($slug);
+
+    }
 }
