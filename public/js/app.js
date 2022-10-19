@@ -2607,6 +2607,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
         article_id: payload.article_id
       }).then(function (response) {
         context.commit('SET_COMMENT_SUCCESS', !context.state.commentSuccess);
+        context.dispatch('getArticleData', context.state.slug);
       })["catch"](function () {
         console.log('### Error add comment.');
       });

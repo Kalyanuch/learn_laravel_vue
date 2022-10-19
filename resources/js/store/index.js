@@ -54,6 +54,7 @@ export default new Vuex.Store({
                 article_id: payload.article_id
             }).then((response) => {
                 context.commit('SET_COMMENT_SUCCESS', !context.state.commentSuccess);
+                context.dispatch('getArticleData', context.state.slug);
             }).catch(() => {
                 console.log('### Error add comment.');
             });
