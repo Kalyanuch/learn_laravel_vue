@@ -78,3 +78,6 @@ php artisan make:controller Api/CommentController
 
 // Create request for comment validation
 php artisan make:request Comment/CreateRequest
+
+// Create job for adding new comment.
+php artisan make:job AddNewComment
