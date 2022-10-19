@@ -75,3 +75,6 @@ php artisan make:resource StateResource
 
 // Create API controller
 php artisan make:controller Api/CommentController
+
+// Create request for comment validation
+php artisan make:request Comment/CreateRequest
