@@ -68,7 +68,7 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        SET_ARTICLE(state, payload) {
+        SET_ARTICLE(state, payload) {console.log('### Article ', payload);
             return state.article = payload;
         },
         SET_SLUG(state, payload) {

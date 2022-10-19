@@ -12,8 +12,8 @@
             <button class="btn btn-success" type="submit">Відправити</button>
         </form>
         <div class="alert alert-success" role="alert" v-else>Коментар успішно надіслано.</div>
-        <div class="toast-container pb-5 mt-5 mx-auto" style="min-width: 100%;" v-for="comment in comments">
-            <div class="toast showing" style="min-width:100%">
+        <div class="toast-container pb-5 mt-5 mx-auto" style="min-width: 100%; position: initial;" v-for="comment in comments">
+            <div class="toast show" style="min-width:100%">
                 <div class="toast-header">
                     <img src="https://via.placeholder.com/50/5F1138/FFFFFF/?text=User" alt="user_avatar" class="rounded">
                     <strong class="mx-auto">{{ comment.subject }}</strong>

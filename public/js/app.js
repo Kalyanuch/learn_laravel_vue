@@ -2348,10 +2348,11 @@ var render = function render() {
     return _c("div", {
       staticClass: "toast-container pb-5 mt-5 mx-auto",
       staticStyle: {
-        "min-width": "100%"
+        "min-width": "100%",
+        position: "initial"
       }
     }, [_c("div", {
-      staticClass: "toast showing",
+      staticClass: "toast show",
       staticStyle: {
         "min-width": "100%"
       }
@@ -2621,6 +2622,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
   },
   mutations: {
     SET_ARTICLE: function SET_ARTICLE(state, payload) {
+      console.log('### Article ', payload);
       return state.article = payload;
     },
     SET_SLUG: function SET_SLUG(state, payload) {
