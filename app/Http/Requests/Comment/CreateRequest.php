@@ -29,4 +29,19 @@ class CreateRequest extends FormRequest
             'article_id' => 'required',
         ];
     }
+
+    /**
+     * Custom validation messages.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'subject.required' => 'Потрібно заповнити це поле',
+            'subject.min' => 'Кількість символів повинна бути більше :min',
+            'body.required' => 'Потрібно заповнити це поле',
+            'body.min' => 'Кількість символів повинна бути більше :min',
+        ];
+    }
 }
