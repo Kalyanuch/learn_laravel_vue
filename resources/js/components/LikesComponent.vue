@@ -21,7 +21,7 @@ export default {
         }
     },
     mounted() {
-        console.log('Component mounted');
+        console.log('Likes component mounted');
     }
 }
 </script>

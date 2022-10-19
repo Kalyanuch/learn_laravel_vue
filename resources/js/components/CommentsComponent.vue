@@ -38,7 +38,7 @@ export default {
             return this.$store.state.article.comments;
         },
         commentSuccess() {
-            return this.$store.state.article.commentSuccess;
+            return this.$store.state.commentSuccess;
         }
     },
     methods: {
@@ -51,7 +51,7 @@ export default {
         }
     },
     mounted() {
-        console.log('Component mounted');
+        console.log('Comments component mounted');
     }
 }
 </script>
