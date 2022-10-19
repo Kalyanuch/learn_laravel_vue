@@ -15,7 +15,8 @@ export default new Vuex.Store({
         },
         slug: '',
         likeIt: true,
-        commentSuccess: false
+        commentSuccess: false,
+        errors: []
     },
     actions: {
         getArticleData(context, payload) {
@@ -55,8 +56,12 @@ export default new Vuex.Store({
             }).then((response) => {
                 context.commit('SET_COMMENT_SUCCESS', !context.state.commentSuccess);
                 context.dispatch('getArticleData', context.state.slug);
-            }).catch(() => {
+            }).catch((error) => {
                 console.log('### Error add comment.');
+
+                if(error.response.status == 422) {
+                    context.state.errors = error.response.data.errors;
+                }
             });
         }
     },

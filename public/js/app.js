@@ -2110,6 +2110,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     commentSuccess: function commentSuccess() {
       return this.$store.state.commentSuccess;
+    },
+    errorMessage: function errorMessage() {
+      return this.$store.state.errors;
     }
   },
   methods: {
@@ -2304,7 +2307,12 @@ var render = function render() {
         _vm.subject = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm.errorMessage.subject ? _c("div", {
+    staticClass: "alert alert-warning",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v(_vm._s(_vm.errorMessage.subject[0]))]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label",
@@ -2334,7 +2342,12 @@ var render = function render() {
         _vm.body = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _vm.errorMessage.body ? _c("div", {
+    staticClass: "alert alert-warning",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v(_vm._s(_vm.errorMessage.body[0]))]) : _vm._e()]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-success",
     attrs: {
       type: "submit"
@@ -2563,7 +2576,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     slug: '',
     likeIt: true,
-    commentSuccess: false
+    commentSuccess: false,
+    errors: []
   },
   actions: {
     getArticleData: function getArticleData(context, payload) {
@@ -2608,8 +2622,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
       }).then(function (response) {
         context.commit('SET_COMMENT_SUCCESS', !context.state.commentSuccess);
         context.dispatch('getArticleData', context.state.slug);
-      })["catch"](function () {
+      })["catch"](function (error) {
         console.log('### Error add comment.');
+
+        if (error.response.status == 422) {
+          context.state.errors = error.response.data.errors;
+        }
       });
     }
   },

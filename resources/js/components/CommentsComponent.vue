@@ -4,10 +4,12 @@
             <div class="mb-3">
                 <label for="commentSubject" class="form-label">Тема коментарію:</label>
                 <input type="text" class="form-control" id="commentSubject" v-model="subject">
+                <div class="alert alert-warning" role="alert" v-if="errorMessage.subject">{{ errorMessage.subject[0] }}</div>
             </div>
             <div class="mb-3">
                 <label for="commentBody" class="form-label">Текст коментарію:</label>
                 <textarea name="" id="commentBody" cols="30" rows="3" class="form-control" v-model="body"></textarea>
+                <div class="alert alert-warning" role="alert" v-if="errorMessage.body">{{ errorMessage.body[0] }}</div>
             </div>
             <button class="btn btn-success" type="submit">Відправити</button>
         </form>
@@ -39,6 +41,9 @@ export default {
         },
         commentSuccess() {
             return this.$store.state.commentSuccess;
+        },
+        errorMessage() {
+            return this.$store.state.errors;
         }
     },
     methods: {
